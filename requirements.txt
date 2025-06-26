@@ -1,0 +1,14 @@
+a2a-sdk==0.2.5
+mcp==1.9.4
+httpx==0.28.1
+langchain==0.3.25
+langchain-openai==0.3.22
+langgraph==0.4.10
+smolagents==1.17.0
+smolagents[mcp]
+openai==1.86.0
+starlette
+uvicorn
+notebook
+pymupdf
+rapidfuzz
