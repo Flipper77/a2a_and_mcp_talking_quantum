@@ -1,18 +1,18 @@
 # A2A Talking Quantum – Minimal Agent-to-Agent (A2A) Demo
 
 This repository accompanies our Medium article **“A New Hope: When a SmolAgent Meets a LangGraph Agent to Talk About Quantum Squirrels”**.  
-It demonstrates how to integrate remote agents into a SmolAgents-based host via the A2A protocol, combining the modular reasoning power of **SmolAgents** with the orchestration capabilities of **LangGraph**.
+It demonstrates how to integrate (remote) agents and tools into a SmolAgents-based host via the A2A and MCP protocol, respectively.
 
 ---
 
 ## Highlights
 
 This example shows:
-- A **remote (or local) LangGraph-based literary critic agent**, wrapped in an A2A-compatible server using `A2AStarletteApplication`
+- A **remote (or local) LangGraph-based literary critic agent**, wrapped in an A2A-compatible server 
 - A **local SmolAgent host system**, able to reason and call both:
   - remote (or local) classic tools via **MCP** (e.g., library document tools), and
   - remote (or local) agents via **A2A**
-- A **proxy bootstrapping system** to expose remote A2A agents to the local SmolAgent host
+- A **proxy bootstrapping system** and **A2A Client** to expose remote A2A agents to the local SmolAgent host
 
 Agents use protocols to collaborate: **MCP for tools**, **A2A for peer agents**.
 
@@ -20,7 +20,7 @@ Agents use protocols to collaborate: **MCP for tools**, **A2A for peer agents**.
 
 ## Setup
 
-Create new `python==3.12` environment. Activate it.
+Create a new `python==3.12` environment. Activate it.
 
 ```bash
 git clone <repo-url>
@@ -32,7 +32,7 @@ If you are using `conda`, don't forget `conda install nb_conda_kernels`
 
 ---
 
-## Start the Remote Literary Critic (A2A Agent Server)
+## Optionally: Start the Remote Literary Critic (A2A Agent Server)
 
 This is the LangGraph-powered A2A agent server.
 Start it from the host notebook (below) or manually:
@@ -40,13 +40,13 @@ Start it from the host notebook (below) or manually:
 ```bash
 python literature_critic.py --url <url> --openai-key <your openai key>
 ```
+where `url` is e.g. "http://localhost:52042" (default)
 
-- Port: `52042` (default)
 - Described by an `AgentCard` and accessible via A2A protocol
 
 ---
 
-## MCP Tooling (Library Server)
+## Optionally: MCP Tooling (Library Server)
 
 In parallel, we also run a classic MCP tool server.
 Start it from the host notebook (below) or manually:
@@ -55,7 +55,7 @@ Start it from the host notebook (below) or manually:
 python library_server.py
 ```
 
-- Port: `58002` (default for MCP tools)
+- Runs on port: `58002` (our default for the MCP server)
 - Serves document tools: `get_library`, `get_document`
 
 ## Starting the host
